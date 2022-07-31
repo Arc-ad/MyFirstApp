@@ -10,12 +10,12 @@
     <children>
         <AnchorPane layoutY="101.0" prefHeight="299.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
-                <Label layoutX="150.0" layoutY="14.0" prefHeight="74.0" prefWidth="401.0" text="Здорово ничтожество!" textFill="#545454">
+                <Label layoutX="238.0" layoutY="14.0" prefHeight="74.0" prefWidth="225.0" text="Привет бро!)" textFill="#545454">
                     <font>
                         <Font name="Georgia" size="36.0" />
                     </font>
                 </Label>
-            <ImageView fitHeight="140.0" fitWidth="163.0" layoutX="248.0" layoutY="87.0">
+            <ImageView fitHeight="140.0" fitWidth="163.0" layoutX="269.0" layoutY="88.0">
                <image>
                   <Image url="@home.png" />
                </image>

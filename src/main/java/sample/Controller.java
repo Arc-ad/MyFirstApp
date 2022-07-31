@@ -50,19 +50,7 @@ public class Controller {
 
         }  );
         loginSignUpButton.setOnAction(actionEvent -> {
-            loginSignUpButton.getScene().getWindow().hide();        //закрытие основного окна
-            FXMLLoader loader = new FXMLLoader();       //новое окно
-            loader.setLocation(getClass().getResource("/sample/signUp.fxml"));      //передаем путь к этому окну
-            try {
-                loader.load();      //загружаем этот файл
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();     //путь к файлу который нам нужно загрузить
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();        //показать и подождать пока окно отобразится
-
+           openNewScene("/sample/signUp.fxml");
 
         });
     }
@@ -84,6 +72,7 @@ public class Controller {
         }
         if(counter>= 1){
             System.out.println("Success!");
+            openNewScene("/sample/app.fxml");
         }
         else {
             Shake userLoginAnim = new Shake(loginField);
@@ -92,5 +81,20 @@ public class Controller {
             userPassAnim.playAnim();
         }
     }
+    public void openNewScene(String window)
+    {
+        loginSignUpButton.getScene().getWindow().hide();        //закрытие основного окна
+        FXMLLoader loader = new FXMLLoader();       //новое окно
+        loader.setLocation(getClass().getResource(window));      //передаем путь к этому окну
+        try {
+            loader.load();      //загружаем этот файл
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();     //путь к файлу который нам нужно загрузить
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();        //показать и подождать пока окно отобразится
 
+    }
 }
