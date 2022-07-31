@@ -43,15 +43,31 @@ public class SignUpController {
 
     @FXML
     void initialize() {
-        DateBaseHandler dbHandler = new DateBaseHandler();
+
         signUoButton.setOnAction(ActionEvent -> {
-            dbHandler.signUpUser(signUpName.getText(), signUpLastName.getText(),
-                    loginField.getText(),passwordField.getText(), signUpCountry.getText(),
-                    "Male");
+            singUpNewUser();
+
+
 
         });
 
 
+    }
+
+    private void singUpNewUser() {
+        DateBaseHandler dbHandler = new DateBaseHandler();
+
+        String firstName = signUpName.getText();
+        String lastName = signUpLastName.getText();
+        String userName = loginField.getText();
+        String password = passwordField.getText();
+        String location = signUpCountry.getText();
+        String gender = "";
+        if(signUpCheckBoxMale.isSelected())
+            gender = "Мужской";
+        else gender = "Женский";
+        User user = new User(firstName, lastName, userName, password, location, gender);
+        dbHandler.signUpUser(user);
     }
 
 }

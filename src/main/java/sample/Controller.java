@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Controller {
@@ -65,6 +67,23 @@ public class Controller {
     }
 
     private void loginUser(String loginText, String loginPassword) {
+        DateBaseHandler dbHandler = new DateBaseHandler();
+        User user = new User();
+        user.setUserName(loginText);
+        user.setPassword(loginPassword);
+        ResultSet result = dbHandler.getUser(user);
+        int counter = 0;
+        while (true){
+            try {
+                if (!result.next()) break;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            counter++;
+        }
+        if(counter>= 1){
+            System.out.println("Success!");
+        }
     }
 
 }
